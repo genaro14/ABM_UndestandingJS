@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Create two equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 50%;
+                padding: 10px;
+                height: 300px; /* Should be removed. Only for demonstration */
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="row">
+            <div class="column">
+                <h2>Carga de personas</h2>
+
+                <form name="myForm" onsubmit="return handleSubmit()">
+                    <label for="dni">DNI:</label><br>
+                    <input type="text" id="dni" name="dni"><br><br>
+                    <label for="firstname">Nombre:</label><br>
+                    <input type="text" id="firstname" name="fname"><br><br>
+                    <label for="lastname">Apellido:</label><br>
+                    <input type="text" id="lastname" name="lname"><br><br>
+                    <label for="mail">Correo:</label><br>
+                    <input type="mail" id="mail" name="mail"><br><br>
+                    <label for="tel">Teléfono:</label><br>
+                    <input type="tel" id="tel" name="tel"><br><br>
+                    <input type="checkbox" id="active" name="active" value="active">
+                    <label for="active"> Activo</label><br>
+                    <input type="submit" value="Cargar">
+                </form>
+            </div>
+            <div class="column">
+                <button id="button" onclick="showPersonList()">Recargar</button>
+                <h2>Listado de personas</h2>
+                <table id="table">
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Activo</th>
+                    </tr>
+                </table>
+
+                <h2>Borrar entrada</h2>
+                <label for="dni">Documento:</label><br>
+                <form name="dni_deletion" onsubmit="return handleId()">
+                  <input type="text" id="doc_input" name="doc_input"><br><br>
+                  <input type="submit" value="Borrar">
+                </form>
+            </div>
+        </div>
+      <script src="js/app.js"></script>
+    </body>
+</html>
