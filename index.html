@@ -47,6 +47,13 @@
                 </form>
                 <h2>Descarga</h2>
                 <button onclick=" downloadObjectAsJson()">Descargar</button>
+                <form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
+                  <fieldset>
+                    <h2>Json File</h2>
+                     <input type='file' id='fileinput'>
+                     <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
+                  </fieldset>
+                </form>
             </div>
         </div>
       <script src="js/app.js"></script>
