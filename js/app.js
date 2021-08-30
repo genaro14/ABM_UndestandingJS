@@ -17,7 +17,8 @@ function handleId() {
   let doc_input = document.getElementById('doc_input').value;
   let value = personList.some(elem => elem.dni === doc_input);
   if (!value){
-    console.log('Elemento inexistente')
+    console.log('Elemento inexistente');
+    alert("Elemento inexistente");
     return false;
   }
   else{
@@ -42,7 +43,8 @@ function handleSubmit() {
     console.log('active', active);
     let value = personList.find(elem => elem.dni === dni);
     if (value){
-      console.log('Elemento ya ingresado')
+      console.log('Elemento ya ingresado');
+      alert("Elemento ya ingresado");
       return false;
     }
     else{
