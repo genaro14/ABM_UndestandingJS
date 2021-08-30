@@ -15,10 +15,17 @@ const personList = [];
 
 function handleId() {
   let doc_input = document.getElementById('doc_input').value;
-  delete_id( doc_input );
-  console.log(personList);
-  showPersonList();
-  return false;
+  let value = personList.some(elem => elem.dni === doc_input);
+  if (!value){
+    console.log('Elemento inexistente')
+    return false;
+  }
+  else{
+    delete_id( doc_input );
+     console.log(personList);
+     showPersonList();
+     return false;
+  }
 }
 function handleSubmit() {
     let dni = document.getElementById('dni').value;
@@ -33,7 +40,12 @@ function handleSubmit() {
     console.log('mail', mail);
     console.log('tel', tel);
     console.log('active', active);
-
+    let value = personList.find(elem => elem.dni === dni);
+    if (value){
+      console.log('Elemento ya ingresado')
+      return false;
+    }
+    else{
     let person = {
         dni,
         name,
@@ -45,6 +57,7 @@ function handleSubmit() {
     personList.push(person);
     showPersonList();
     return false;
+    }
 }
 // Funcion que muestra el listado de personas.
 // Cada vez que se ejecuta la función se vuelve a crear toda la lista.
@@ -81,10 +94,21 @@ function showPersonList() {
       for (var i = 0; i < limit; i++) {
          if (personList[i].dni == id) {
            personList.splice(i,1);
-           console.log('Documento borrado', id);/// -----
+           console.log('Documento borrado', id);
            console.log(personList);
            return;
          }
          console.log(personList);
       }
     }
+    function downloadObjectAsJson(){
+    exportObj = personList;
+    exportName = 'archivo';
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", exportName + ".json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
