@@ -34,13 +34,13 @@ function handleSubmit() {
     let lastname = document.getElementById('lastname').value;
     let mail = document.getElementById('mail').value;
     let tel = document.getElementById('tel').value;
-    let active = document.getElementById('active').value;
-    console.log('dni', dni);
-    console.log('name', name);
-    console.log('lastname', lastname);
-    console.log('mail', mail);
-    console.log('tel', tel);
-    console.log('active', active);
+    let active = document.getElementById('active').checked;
+    // console.log('dni', dni);
+    // console.log('name', name);
+    // console.log('lastname', lastname);
+    // console.log('mail', mail);
+    // console.log('tel', tel);
+    // console.log('active', active);
     let value = personList.find(elem => elem.dni === dni);
     if (value){
       console.log('Elemento ya ingresado');
@@ -54,7 +54,7 @@ function handleSubmit() {
         lastname,
         mail,
         tel,
-        active,
+        active
     };
     personList.push(person);
     showPersonList();
@@ -81,13 +81,15 @@ function showPersonList() {
     cell5.innerHTML = '<b>Teléfono</b>';
     cell6.innerHTML = '<b>Activo</b>';
     personList.forEach(function(person, index) {
+        if(person.active) {
         var row = table.insertRow(index + 1);
         row.insertCell(0).innerHTML = person.dni;
         row.insertCell(1).innerHTML = person.name;
         row.insertCell(2).innerHTML = person.lastname;
         row.insertCell(3).innerHTML = person.mail;
         row.insertCell(4).innerHTML = person.tel;
-        row.insertCell(5).innerHTML = person.active;
+        row.insertCell(5).innerHTML = checkbox(person.active, person.dni);
+        }
     });
 }
   function delete_id( id ) {
@@ -151,3 +153,36 @@ function showPersonList() {
       alert("Info cargada")
     }
   }
+  function checkbox(estado, dni){
+    if (estado){
+        let boton =  '<input type="checkbox" checked="checked" id='+dni+' onclick = changeState('+dni+')>'
+        return boton
+    }
+    else {
+        let boton = '<input type="checkbox" id='+dni+' onclick = changeState('+dni+')>'
+        return boton
+
+    }
+}
+function changeState (name){
+    let checkBox = document.getElementById(name);
+    if (checkBox.checked == true){
+        console.log("Active TRUE", name);
+        personList.map(function(dato){
+            if(dato.dni == name){
+              dato.active = true;
+            }
+
+            return dato;
+        });
+    }
+    else {
+        console.log("Active FALSE", name);
+        personList.map(function(dato){
+            if(dato.dni == name){
+              dato.active = false;
+            }
+            return dato;
+        });
+    }
+}
