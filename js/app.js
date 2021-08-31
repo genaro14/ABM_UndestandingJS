@@ -125,19 +125,19 @@ function showPersonList() {
     var input, file, fr;
 
     if (typeof window.FileReader !== 'function') {
-      alert("The file API isn't supported on this browser yet.");
+      alert("The file API no esta soportada en este navegador.");
       return;
     }
 
     input = document.getElementById('fileinput');
     if (!input) {
-      alert("Um, couldn't find the fileinput element.");
+      alert("No se pudo encontrar el elemento");
     }
     else if (!input.files) {
-      alert("This browser doesn't seem to support the `files` property of file inputs.");
+      alert("Este navegador no soporta: `files` property of file inputs.");
     }
     else if (!input.files[0]) {
-      alert("Please select a file before clicking 'Load'");
+      alert("Seleccione un archivo antes de 'Cargar' ");
     }
     else {
       file = input.files[0];
