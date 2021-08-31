@@ -11,7 +11,7 @@
  * Código para tomar de referencia. No hace falta utilizarlo,
  * lo pueden implementar como quieran.
  */
-const personList = [];
+var personList = [];
 
 function handleId() {
   let doc_input = document.getElementById('doc_input').value;
@@ -147,7 +147,7 @@ function showPersonList() {
       let lines = e.target.result;
       const jsonList = JSON.parse(lines);
       console.log(jsonList);
-      personList.push(jsonList);
+      personList = jsonList;
       console.log(personList);
       showPersonList();
       alert("Info cargada")
