@@ -26,7 +26,6 @@
                 </form>
             </div>
             <div class="column">
-                <button id="button" onclick="showPersonList()">Recargar</button>
                 <h2>Listado de personas</h2>
                 <table id="table">
                     <tr>
@@ -38,6 +37,9 @@
                         <th>Activo</th>
                     </tr>
                 </table>
+                <br>
+                <button id="button" onclick="showPersonList()">Recargar</button>
+                <hr>
 
                 <h2>Borrar entrada</h2>
                 <label for="dni">Documento:</label><br>
@@ -45,10 +47,13 @@
                   <input type="text" id="doc_input" name="doc_input"><br><br>
                   <input type="submit" value="Borrar">
                 </form>
-                <h2>Descarga JSON</h2>
+                <hr>
+                <h2>Archivos</h2>
+
+                <h3>Descarga JSON</h3>
                 <button onclick=" downloadObjectAsJson()">Descargar</button>
                 <form id="jsonFile" name="Archivo JSON" enctype="multipart/form-data" method="post">
-                    <h2>Carga JSON</h2>
+                    <h3>Carga JSON</h3>
                      <input type='file' id='fileinput' value='Buscar'>
                      <input type='button' id='btnLoad' value='Cargar' onclick='loadFile();'>
                 </form>
