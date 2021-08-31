@@ -80,15 +80,18 @@ function showPersonList() {
     cell4.innerHTML = '<b>Correo</b>';
     cell5.innerHTML = '<b>Teléfono</b>';
     cell6.innerHTML = '<b>Activo</b>';
+    var i = 0;
     personList.forEach(function(person, index) {
         if(person.active) {
-        var row = table.insertRow(index + 1);
+        console.log(i);
+        var row = table.insertRow(i + 1);
         row.insertCell(0).innerHTML = person.dni;
         row.insertCell(1).innerHTML = person.name;
         row.insertCell(2).innerHTML = person.lastname;
         row.insertCell(3).innerHTML = person.mail;
         row.insertCell(4).innerHTML = person.tel;
         row.insertCell(5).innerHTML = checkbox(person.active, person.dni);
+        i++;
         }
     });
 }
